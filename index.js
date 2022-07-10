@@ -39,7 +39,7 @@ keys.addEventListener('click', event => {
     if (type === 'equal'){
         const firstNumber = parseInt(calculator.dataset.firstNumber)
         const operator = calculator.dataset.operator
-        const unknown = calculator.dataset.number
+        
         const secondNumber = parseInt(displayValue)
         let result = ''
         if (operator === 'plus'){
@@ -50,15 +50,24 @@ keys.addEventListener('click', event => {
             result = firstNumber * secondNumber
         }else if(operator === 'divide'){
             result = firstNumber / secondNumber
-        }else if(unknown === 'clear'){
-            result = ''
-        }
-        
-        display.textContent = result
-        //perform a calculation 
+         
+        }display.textContent = result 
     }
+    if (type === 'clear'){
+        display.textContent = '0'
+        delete calculator.dataset.firstNumber
+        delete calculator.dataset.operator
+    }
+        calculator.dataset.previousKeyType = type
+})
+function clearCalculator () {
+    const clearKey = document.querySelector('[data-type="clear"]')
+    clearKey.click()
+}
 
+const one = document.querySelector('.one')
 
-    calculator.dataset.previousKeyType = type 
-    
-});
+const displayValue = display.textContent
+one.click()
+console.assert(display.textContent === '1', 'Clicked One')
+clearCalculator()
