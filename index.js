@@ -1,4 +1,4 @@
-alert('harkanbi welcome')
+alert('Welcome, you can perform some basic mathematical expressions ')
 //starting to write my javascript code
 //getting of html file by fetting it with the query selector
 const keys = document.querySelector('.calculator_keys');
